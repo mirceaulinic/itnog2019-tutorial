@@ -1,12 +1,9 @@
-Extending Salt's capabilities for event-driven network automation and orchestration: NANOG 76 tutorial
+Extending Salt's capabilities for event-driven network automation and orchestration: ITNOG 2019 tutorial
 ======================================================================================================
 
 This repository contains the Pillars and the extension modules used during the 
-live demo for the `NANOG 76 tutorial 
-<https://pc.nanog.org/static/published/meetings//NANOG76/daily/day_3.html#talk_1982>`__.
-
-The slides are available at:
-https://pc.nanog.org/static/published/meetings/NANOG76/1982/20190612_Ulinic_Extending_Salt_S_Capabilities_v1.pdf
+live demo for the ITNOG on the road tutorial, at the `EOLO NIC event 
+<https://www.eolo.it/nic/>`__.
 
 During the live demo I have provided access to several 
 https://www.digitalocean.com/ `Droplets 
@@ -53,7 +50,7 @@ On each Droplet there's a Salt Master running, and two Proxy Minions, named
       True
 
 The Master config file used in this case is the one from this repository -
-https://github.com/mirceaulinic/nanog76-tutorial/blob/master/master:
+https://github.com/mirceaulinic/itnog2019-tutorial/blob/master/master:
 
 .. code-block:: yaml
 
@@ -69,13 +66,13 @@ https://github.com/mirceaulinic/nanog76-tutorial/blob/master/master:
       - /srv/salt/extmods
 
 For simplicity, the ``/srv/salt`` directory is a symlink to 
-``/home/salt/nanog76-tutorial`` which is the place where this repository has 
+``/home/salt/itnog2019-tutorial`` which is the place where this repository has 
 been cloned:
 
 .. code-block:: bash
 
   salt@srv1:~$ ls -la /srv/salt
-  lrwxrwxrwx 1 root root 27 Jun  6 09:56 /srv/salt -> /home/salt/nanog76-tutorial
+  lrwxrwxrwx 1 root root 27 Jun  6 09:56 /srv/salt -> /home/salt/itnog2019-tutorial
   salt@srv1:~$
 
 Therefore, the Master is going to load the Pillar data from the ``pillar`` 
@@ -89,11 +86,11 @@ When using Docker, please see the Docker installation instructions:
 https://docs.docker.com/install/, as well as Docker Compose:
 https://docs.docker.com/compose/install/.
 
-Clone this repository and move into the ``nanog76-tutorial`` directory:
+Clone this repository and move into the ``itnog2019-tutorial`` directory:
 
 .. code-block:: bash
 
-    $ git clone https://github.com/mirceaulinic/nanog76-tutorial.git
+    $ git clone https://github.com/mirceaulinic/itnog2019-tutorial.git
     $ cd nanaog76-tutorial/
 
 Edit the ``pillar/junos_pillar.sls`` and / or ``pillar/arista_pillar.sls`` with 
@@ -108,13 +105,13 @@ device, you can use the NAPALM CLI tool, e.g.,
         napalm --vendor junos \
                --user salt \
                --password password \
-               junos.nanog76-demo.digitalocean.cloud.tesuto.com \
+               junos.itnog2019-demo.digitalocean.cloud.tesuto.com \
                call get_facts
 
 During the live session, it is possible to use the following hostnames to 
 connect to a Tesuto-provided Juniper or Arista VM, 
-``junos<ID>.nanog76-demo.digitalocean.cloud.tesuto.com``, or 
-``eos<ID>.nanog76-demo.digitalocean.cloud.tesuto.com``, e.g., 
+``junos<ID>.itnog2019-demo.digitalocean.cloud.tesuto.com``, or 
+``eos<ID>.itnog2019-demo.digitalocean.cloud.tesuto.com``, e.g., 
 ``junos5.nano76-demo.digitalocean.cloud.tesuto.com``. Otherwise, you should be 
 able to use any VM or real device you might have available.
 
